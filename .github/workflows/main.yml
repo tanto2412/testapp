@@ -1,0 +1,36 @@
+# Name of workflow to be displyed on Github Console
+name: Build and Test Go Application
+
+# Triggers the workflow on separate events 
+on:
+  workflow_dispatch:
+    inputs:
+      release_notes:
+        description: write your changes here
+        required: true
+        default: new release
+      commit_refs:
+        description: commit hash
+        required: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # "notify" workflow for slack notification
+  notify:
+
+    name: Notify on Slack
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: abinoda/slack-action@master
+        env:
+          # required
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+          # custom message to send to slack
+          args: '{\"channel\":\"C033T2QAD5E\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Release Notes:* ${{ github.event.inputs.release_notes }}\"}}]}' 
+        
+        # Pick up events even if the job is success.
+        if: success()
+        
