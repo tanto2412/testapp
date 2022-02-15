@@ -47,7 +47,7 @@ jobs:
           APP_ENV: dev
         with:
           # custom message to send to slack
-          args: '{\"channel\":\"C033T2QAD5E\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*New deployment on ${{env.APP_ENV}} ${{check_image.status}}*\n${{ github.event.inputs.release_notes }}\"}}]}' 
+          args: '{\"channel\":\"C033T2QAD5E\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*New deployment on ${{env.APP_ENV}} ${{github.action_status}}*\n${{ github.event.inputs.release_notes }}\"}}]}' 
         
         # Pick up events even if the job is success.
         if: success()
