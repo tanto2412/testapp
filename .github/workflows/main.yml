@@ -18,6 +18,19 @@ jobs:
   check_image:
     name: Check
     runs-on: ubuntu-latest
+    steps:
+      - uses: abinoda/slack-action@master
+        env:
+          # required
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          APP_ENV: dev
+        with:
+          # custom message to send to slack
+          args: '{\"channel\":\"C033T2QAD5E\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*New deployment on ${{ENV_APP}}*\n${{ github.event.inputs.release_notes }}\"}}]}' 
+        
+        # Pick up events even if the job is success.
+        if: success()
+      
   # "notify" workflow for slack notification
   notify:
 
