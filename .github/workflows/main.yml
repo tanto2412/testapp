@@ -53,7 +53,7 @@ jobs:
               "blocks": [
                 {
                   "type": "section",
-                  text": {
+                  "text": {
                     "type": "mrkdwn",
                     "text": "New deployment on <${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}> by <${{ github.server_url }}/${{ github.actor }}|${{ github.actor }}>"
                   }
@@ -82,7 +82,7 @@ jobs:
                   }
                 }, 
                 {
-                  "type": "section\",
+                  "type": "section",
                   "text": {
                     "type": "mrkdwn",
                     "text": "*Changes*
