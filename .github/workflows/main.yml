@@ -23,11 +23,11 @@ jobs:
       SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
       APP_ENV: dev
     steps:
-      - uses: abinoda/slack-action@master
+      - name: test
         id: step1
-        with:
+        run: exit $1
           # custom message to send to slack
-          args: '{\"channel\":\"C033T2QAD5E\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*New deployment on ${{env.APP_ENV}}*\n${{ github.event.inputs.release_notes }} ${{github.server_url}}/${{github.actor}} ${{github.api_url}} ${{github.repositoryUrl}}\"}}]}' 
+#           args: '{\"channel\":\"C033T2QAD5E\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*New deployment on ${{env.APP_ENV}}*\n${{ github.event.inputs.release_notes }} ${{github.server_url}}/${{github.actor}} ${{github.api_url}} ${{github.repositoryUrl}}\"}}]}' 
         
       - uses: abinoda/slack-action@master
         if: success()
