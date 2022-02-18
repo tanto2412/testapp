@@ -49,13 +49,44 @@ jobs:
           # custom message to send to slack
           args: >
             {
-            "channel": "C033T2QAD5E",
-            "blocks": [
+            \"channel\": \"C033T2QAD5E\",
+            \"blocks\": [
             {
-            "type": "section",
-            "text": {
-            "type": "mrkdwn",
-            "text": "New deployment on <${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}> by <${{ github.server_url }}/${{ github.actor }}|${{ github.actor }}>"
+            \"type\": \"section\",
+            \"text\": {
+            \"type\": \"mrkdwn\",
+            \"text\": \"New deployment on <${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}> by <${{ github.server_url }}/${{ github.actor }}|${{ github.actor }}>\"
+            }
+            },
+            {
+            \"type\": \"section\",
+            \"fields\": [
+            {
+            \"type\": \"mrkdwn\",
+            \"text\": \"*Environment*\n
+            ${{ env.APP_ENV }}\"
+            },
+            {
+            \"type\": \"mrkdwn\",
+            \"text\": \"*Status*\n
+            ${{ needs.check_image.result }}\"
+            }
+            ]
+            },
+            {
+            \"type\": \"section\",
+            \"text\": {
+            \"type\": \"mrkdwn\",
+            \"text\": \"*Commit*\n
+            `${{github.event.inputs.commit_refs}}`\"
+            }
+            },
+            {
+            \"type\": \"section\",
+            \"text\": {
+            \"type\": \"mrkdwn\",
+            \"text\": \"*Changes*\n
+            ${{ github.event.inputs.release_notes }}\"
             }
             }
             ]
