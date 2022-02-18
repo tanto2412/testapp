@@ -47,8 +47,8 @@ jobs:
           APP_ENV: dev
         with:
           # custom message to send to slack
-          args: >
-            {
+          args: |
+          '{
               "channel": "C033T2QAD5E",
               "blocks": [
                 {
@@ -90,7 +90,7 @@ jobs:
                   }
                 }
               ]
-            }
+            }'
           
         # Pick up events even if the job is success.
         if: success()
