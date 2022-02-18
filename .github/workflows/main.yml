@@ -24,6 +24,7 @@ jobs:
       APP_ENV: dev
     steps:
       - uses: abinoda/slack-action@master
+        id: step1
         with:
           # custom message to send to slack
           args: '{\"channel\":\"C033T2QAD5E\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*New deployment on ${{env.APP_ENV}}*\n${{ github.event.inputs.release_notes }} ${{github.server_url}}/${{github.actor}} ${{github.api_url}} ${{github.repositoryUrl}}\"}}]}' 
@@ -54,7 +55,7 @@ jobs:
             {
             \"type\": \"mrkdwn\",
             \"text\": \"*Status*\n
-            ${{ needs.check_image.result }}\"
+            ${{ toJSON(steps.step1) }}\"
             }
             ]
             },
