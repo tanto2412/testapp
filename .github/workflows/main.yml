@@ -63,12 +63,12 @@ jobs:
             "fields": [
             {
             "type": "mrkdwn",
-            "text": "*Environment*\\n
-              ${{ env.APP_ENV }}"
+            "text": "*Environment*\n
+            ${{ env.APP_ENV }}"
             },
             {
             "type": "mrkdwn",
-            "text": "*Status*\\n
+            "text": "*Status*\n
             ${{ needs.check_image.result }}"
             }
             ]
@@ -77,7 +77,7 @@ jobs:
             "type": "section",
             "text": {
             "type": "mrkdwn",
-            "text": "*Commit*\\n
+            "text": "*Commit*\n
             `${{github.event.inputs.commit_refs}}`"
             }
             },
@@ -85,7 +85,7 @@ jobs:
             "type": "section",
             "text": {
             "type": "mrkdwn",
-            "text": "*Changes*\\n
+            "text": "*Changes*\n
             ${{ github.event.inputs.release_notes }}"
             }
             }
