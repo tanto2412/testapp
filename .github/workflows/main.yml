@@ -55,7 +55,7 @@ jobs:
             {
             \"type\": \"mrkdwn\",
             \"text\": \"*Status*\n
-            ${{ toJSON(steps.step1) }}\"
+            ${{ steps.step1.conclusion }}\"
             }
             ]
             },
@@ -104,7 +104,7 @@ jobs:
             {
             \"type\": \"mrkdwn\",
             \"text\": \"*Status*\n
-            ${{ needs.check_image.result }}\"
+            ${{ steps.step1.conclusion }}\"
             }
             ]
             },
