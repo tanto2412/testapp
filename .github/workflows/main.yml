@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: test
         id: step1
-        run: exit $1
+        run: docker manifest inspect ${{ env.APP_DOCKER_REPOSITORY }}:dev.
           # custom message to send to slack
 #           args: '{\"channel\":\"C033T2QAD5E\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*New deployment on ${{env.APP_ENV}}*\n${{ github.event.inputs.release_notes }} ${{github.server_url}}/${{github.actor}} ${{github.api_url}} ${{github.repositoryUrl}}\"}}]}' 
         
