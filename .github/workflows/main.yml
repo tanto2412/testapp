@@ -49,13 +49,13 @@ jobs:
           # custom message to send to slack
           args: >
             {
-            \"channel\": \"C033T2QAD5E\",
-            \"blocks\": [
+            "channel": "C033T2QAD5E",
+            "blocks": [
             {
-            \"type\": \"section\",
-            \"text\": {
-            \"type\": \"mrkdwn\",
-            \"text\": \"New deployment on <${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}> by <${{ github.server_url }}/${{ github.actor }}|${{ github.actor }}>\"
+            "type": "section",
+            "text": {
+            "type": "mrkdwn",
+            "text": "New deployment on <${{ github.server_url }}/${{ github.repository }}|${{ github.repository }}> by <${{ github.server_url }}/${{ github.actor }}|${{ github.actor }}>"
             }
             }
             ]
